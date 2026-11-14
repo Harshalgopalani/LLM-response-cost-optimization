@@ -25,7 +25,7 @@ Traditional LLM interfaces default to exhaustive verbosity, serving 500+ word "w
 
 ## Repository Artifact Navigation
 
-- **[Business Requirements Document (BRD)](docs/Business_Requirements_Document.md):** Problem statement, RACI matrix, and prioritized Functional/Non-Functional requirements catalog.
+- **[Business Requirements Document (BRD)](docs/Business_Requirements_Document(Update).md):** Problem statement, RACI matrix, and prioritized Functional/Non-Functional requirements catalog.
 - **[Architecture & AI Governance](docs/Architecture_and_Governance.md):** Data strategy, dual-state workflows (As-Is vs. To-Be), safety guardrails, and EU AI Act alignment.
 - **[Agile User Stories & Gherkin Specs](docs/User_Stories_And_Gherkin.feature):** Functional requirements translated into Gherkin syntax with ML model benchmarks.
 - **[UAT Test Script & Edge Cases](validation/UAT_Test_Script.md):** Model validation scenarios covering adversarial inputs and system fallbacks.
