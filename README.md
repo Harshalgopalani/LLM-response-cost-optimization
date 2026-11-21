@@ -192,3 +192,67 @@ flowchart TD
 | **Variant A (Control)** | **95%** | Legacy linear flat-text LLM stream. |
 | **Variant B (Treatment)** | **5%** | Full **DCD Pipeline** (SLM Router + Constrained JSON + GenUI). |
 
+### 7.2 Evaluation Benchmarks
+
+| Metric Category | KPI / Benchmark | Measurement Method | Target |
+| :--- | :--- | :--- | :--- |
+| **Product UX** | Read-Time-to-Action (RTTA) | Time elapsed from render to text copy or link click | **-30%** vs. Control |
+| **Engagement** | Accordion Expansion Rate | % of sessions interacting with Accordions/Chips | **15% – 20%** |
+| **Unit Economics** | Inference Compute COGS | Average token spend per session | **-15%** vs. Control |
+| **Model Quality** | Router Classification Precision | Evaluated against human-labeled holdout dataset | **> 95%** |
+
+---
+
+## 8. Kill Criteria & Rollback Governance
+
+> **Governance Principle:** System reliability strictly supersedes optimization. Legacy flat-text rendering remains warm as an instant circuit-breaker fallback.
+
+| ID | Kill Criterion | Trigger Threshold | Automated / Manual Action |
+| :--- | :--- | :--- | :--- |
+| **KC-01** | Latency degradation | Time-To-First-Token (TTFT) increases by **> 200ms** | Pause rollout; audit SLM routing latency. |
+| **KC-02** | JSON schema breakage | Malformed JSON breaks UI in **> 1%** of requests | Trigger instant fallback to flat-text Markdown. |
+| **KC-03** | User friction spike | Manual length-correction prompts increase vs. Control | Recalibrate TCI thresholds and token caps. |
+
+---
+
+## 9. Risks, Edge Cases & Dependencies
+
+### 9.1 Risk Register
+
+| Risk ID | Risk Event | Impact | Mitigation Strategy |
+| :--- | :--- | :--- | :--- |
+| **R-01** | **Under-Classification:** Complex legal/technical prompt tagged as `TCI-1`. | User gets an overly brief 2-sentence answer. | Provide one-click **Depth Slider** / **Elicitation Chips** for instant expansion. |
+| **R-02** | **Stream Interruption:** Incomplete JSON mid-stream. | Frontend component fails to render. | Use incremental JSON parser with automatic Markdown fallback. |
+| **R-03** | **Low Feature Discovery:** Users miss collapsed Accordions. | Users assume the summary is the entire answer. | Add contextual micro-copy (*"Expand for Architecture & Code"*). |
+
+### 9.2 Cross-Functional Dependencies
+* **AI Engineering:** SLM fine-tuning (Groq / Ollama) and JSON schema design (OpenAI / Anthropic).
+* **Backend Engineering:** Stateless **FastAPI** routing service and streaming middleware.
+* **Frontend & UX:** GenUI component library (Summary Anchors, Accordions, Depth Slider).
+* **Business Analysis:** Requirements traceability, A/B telemetry analysis, and executive readout.
+
+---
+
+## 10. 6-Week Execution Roadmap & Sign-Off
+
+### 10.1 Delivery Timeline
+
+| Phase | Timeline | Focus Area | Key Deliverables |
+| :--- | :--- | :--- | :--- |
+| **Sprint 1–2** | Weeks 1–2 | Routing & Data Contracts | Validated SLM classifier (`> 95%` precision) & finalized JSON schemas. |
+| **Sprint 3–4** | Weeks 3–4 | Backend & GenUI Build | FastAPI routing middleware, incremental JSON parser & UI components. |
+| **Sprint 5–6** | Weeks 5–6 | 5% Canary A/B Test | Live telemetry evaluation against KPIs, Kill Criteria & executive readout. |
+
+### 10.2 Stakeholder Sign-Off
+
+| Stakeholder Group | Review Focus | Sign-Off Status |
+| :--- | :--- | :--- |
+| **Executive Sponsor** | ROI, COGS reduction, and strategic alignment | `Pending Final Readout` |
+| **AI & Backend Leads** | Routing latency (`< 50ms`) and JSON reliability | `Approved` |
+| **UX & Product Leads** | Progressive disclosure flow and KPI definitions | `Approved` |
+
+---
+*LLM Response Optimization | Product Requirements & Business Analysis Case Study | September 2026*  
+*Disclaimer: Independent Business Analysis portfolio case study demonstrating AI product strategy, requirements engineering, and KPI governance.*
+
+
